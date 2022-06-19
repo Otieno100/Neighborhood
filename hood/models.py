@@ -13,6 +13,8 @@ class Neighbourhood(models.Model):
     police_contacts =models.PositiveIntegerField(default=0)
     health_contacts =models.PositiveIntegerField( default=0)
     admin = models.ForeignKey(User,on_delete=models.CASCADE, blank=True , null=True)
+    image = models.ImageField(upload_to='images/', default='media/images/default.jpeg')
+
 
 
     def create_neighbourhood(self):
