@@ -33,12 +33,12 @@ class Neighbourhood(models.Model):
         new_name = new_name_object.name
         return new_name
     
-    # @classmethod
-    # def update_occupants(cls,id,new_occupants):
-    #     cls.objects.get(pk = id).update(occupants=new_occupants)
-    #     new_occupants_object = cls.objects.get(pk__id = id)
-    #     new_occupants = new_name_object.occupants
-    #     return new_occupants
+    @classmethod
+    def update_occupants(cls,id,new_occupants):
+        cls.objects.get(pk = id).update(occupants=new_occupants)
+        new_occupants_object = cls.objects.get(pk__id = id)
+        new_occupants = new_occupants_object.occupants
+        return new_occupants
     
     def __str__(self):
         return self.name
