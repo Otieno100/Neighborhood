@@ -14,15 +14,29 @@ def profile(request, username):
     user = User.objects.get(username = username)
     profile = Profile.objects.get(user = user)
     posts = Post.objects.filter(user = user)
-    return render(request, 'all-posts/profile.html', {'profile': profile, 'posts': posts})    
+    return render(request, 'hood/profile.html', {'profile': profile, 'posts': posts})    
 
 
    
-def search(request):
-    if 'site' in request.GET and request.GET['site']:
-        search_term = request.GET.get('site')
-        businesses = Business.objects.filter(name__icontains = search_term)
-        message = f'{search_term}'
-        return render(request, 'all-posts/search.html', {'businesses': businesses, 'message': message})
-        
-    return render(request, 'all-posts/search.html')    
+
+
+
+def search_results(request):
+
+    if 'post' in request.GET and request.GET["post"]:
+        search_term = request.GET.get("post")
+        searched_posts = Post.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'hood/search.html',{"message":message,"posts": searched_posts})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'awwards/search.html',{"message":message})
+
+
+
+def single_neighbourhood(request):
+    neighbourhood = Neighbourhood.objects.all()
+   
+    return render (request, 'hood/neighbourhood.html',{'neighbourhood':neighbourhood})
