@@ -4,6 +4,6 @@ from django.urls import include, re_path
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path(r'^hood/',include('hood.urls'))
+    re_path(r'',include('hood.urls'))
 ]
 
