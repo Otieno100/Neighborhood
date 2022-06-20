@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewNeighbourhoodForm
 from django.http  import HttpResponse,Http404
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render,redirect,get_object_or_404
 
 # Create your views here.
 def welcome(request):
@@ -47,12 +48,9 @@ def single_neighbourhood(request):
     return render (request, 'hood/neighbourhood.html',{'neighbourhood':neighbourhood})
 
 
-def business(request, id):
-    if request.user.is_authenticated:
-        user = User.objects.get(username = request.user)
-        business = Business.objects.get(id = id)
-   
-    return render(request, 'all-posts/business.html', {'business': business})
+def business(request):
+    business = Business.objects.all()
+    return render(request, 'hood/business.html', {'business': business})
 
 
 
@@ -82,3 +80,20 @@ def signUp(request,post_id):
     return render(request,"registration/registration_form.html", {"post":post})
 
 #    
+
+
+
+# def join_hood(request,id):
+#     neighbourhood = get_object_or_404(Neighbourhood,id=id)
+#     request.user.profile.neighbourhood=neighbourhood
+#     request.user.profile.save()
+#     return redirect('home')
+
+# def leave_hood(request,id):
+#     hood = get_object_or_404(Neighbourhood,id=id)
+#     request.user.profile.neighbourhood=None
+#     request.user.profile.save()
+#     return redirect('home')
+
+
+
