@@ -28,16 +28,16 @@ def profile(request, username):
 
 def search_results(request):
 
-    if 'post' in request.GET and request.GET["post"]:
-        search_term = request.GET.get("post")
-        searched_posts = Post.search_by_title(search_term)
+    if 'neighbourhood' in request.GET and request.GET["neighbourhood"]:
+        search_term = request.GET.get("neighbourhood")
+        searched_neighbourhoods = Post.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'hood/search.html',{"message":message,"posts": searched_posts})
+        return render(request, 'hood/search.html',{"message":message,"posts": searched_neighbourhoods})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'awwards/search.html',{"message":message})
+        return render(request, 'hood/search.html',{"message":message})
 
 
 @login_required(login_url='/accounts/login/')
