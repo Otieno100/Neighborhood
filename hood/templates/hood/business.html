@@ -8,7 +8,7 @@
                 {% for business in business %}
                 <div class="col-md-4 col-lg-4 col-sm-12">
                         <div class="card mb-3 mt-3 project" style="height: fit-content;">
-                                <a href="{% url 'business' business.id %}">
+                                <a href="{% url 'create_business' %}">
                                 <h3 class="card-header sign">{{business.owner}}</h3>
                                 <div class="card-body">
                                   <p class="card-text sign"> owned by :{{business.name}}</p>
