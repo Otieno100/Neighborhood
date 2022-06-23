@@ -82,6 +82,13 @@ def signUp(request,post_id):
 #    
 
 
+@login_required
+def join_hood(request, neighborhood_id):
+    neighborhood = get_object_or_404(Neighbourhood, id=neighborhood_id)
+    request.user.profile.neighbourhood = neighborhood
+    request.user.profile.save()
+    return redirect('hood', neighborhood_id = neighborhood.id)
+
 
 # def join_hood(request,id):
 #     neighbourhood = get_object_or_404(Neighbourhood,id=id)

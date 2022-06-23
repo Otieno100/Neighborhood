@@ -83,11 +83,21 @@
                             <p> police_contacts:{{item.police_contacts}}</p>
                             <p> health_contacts:{{item.health_contacts}}</p>
 
+                           
+
                             <p><a href="upload_business/{{request.business.id}}">view businessess around</a>
                             </p>
 
+                            <div class="col-md-4">{% if request.user.profile.neighbourhood == neighbourhood %}
+                                <a href="{% url 'hood'  %}" class="btn btn-outline-danger btn-sm" id="popup">join neighbourhhod
+                                    {{slot.slot_name}}</a>
+                                {% endif %}
+                            </div>
+                    
 
                         </div>
+
+                       
 
                     </div>
 

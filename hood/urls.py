@@ -10,6 +10,7 @@ urlpatterns=[
     re_path(r'^accounts/', include('registration.backends.simple.urls')),
     re_path(r'^new/article$', views.new_neighbourhood, name='new-neighbourhood'),
     re_path(r'^upload_business/$', views.business, name='create_business'),
+    re_path('joinhood/<slot_id>',views.join_hood,name='join_hood'),
     
 ]
 
